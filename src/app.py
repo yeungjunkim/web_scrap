@@ -11,7 +11,7 @@ def search_page():
 
 def manage_page():
     st.title("관리 화면")
-    file_path = "data.csv"
+    file_path = "./data.csv"
     
     if not os.path.exists(file_path):
         df = pd.DataFrame(columns=["url", "method", "keyword"])
