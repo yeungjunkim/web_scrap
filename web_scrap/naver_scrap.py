@@ -332,7 +332,7 @@ def web_search(query):
     save_to_excel(results)
     global summary_filename
     print(f'summary_filename = [{summary_filename}]')
-    download_excel_file('https://webscrap-mljvl7eypkhf5j4lxlz8b6.streamlit.app/', summary_filename)
+    download_excel_file('https://webscrap-egizqrren8hgkdxx5rqwur.streamlit.app/', summary_filename)
 
 if __name__ == "__main__":
     # 필요한 라이브러리 설치 확인
