@@ -337,6 +337,21 @@ files = [
 ]
 
 [[package]]
+name = "chromedriver-autoinstaller"
+version = "0.6.4"
+description = "Automatically install chromedriver that supports the currently installed version of chrome."
+optional = false
+python-versions = ">=3.6"
+groups = ["main"]
+files = [
+    {file = "chromedriver-autoinstaller-0.6.4.tar.gz", hash = "sha256:1b4df04b87e6107c730085b98e5fd541db3d1777c32b8bd08e2ca4b1244050af"},
+    {file = "chromedriver_autoinstaller-0.6.4-py3-none-any.whl", hash = "sha256:b12ed187ca9fac4d744deb588d221222ed50836384607e5303e6eab98bb9dc64"},
+]
+
+[package.dependencies]
+packaging = ">=23.1"
+
+[[package]]
 name = "click"
 version = "8.1.8"
 description = "Composable command line interface toolkit"
@@ -724,14 +739,14 @@ files = [
 
 [[package]]
 name = "narwhals"
-version = "1.29.1"
+version = "1.30.0"
 description = "Extremely lightweight compatibility layer between dataframe libraries"
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "narwhals-1.29.1-py3-none-any.whl", hash = "sha256:2f68cfbb2562672c4dfa54f158ed8c2828e9920ef784981cd9114e419c444216"},
-    {file = "narwhals-1.29.1.tar.gz", hash = "sha256:c408acf09e90c116f247cf34f24a3a89d147e3e235b1d3c708cfd1960baf320a"},
+    {file = "narwhals-1.30.0-py3-none-any.whl", hash = "sha256:443aa0a1abfae89bc65a6b888a7e310a03d1818bfb2ccd61c150199a5f954c17"},
+    {file = "narwhals-1.30.0.tar.gz", hash = "sha256:0c50cc67a5404da501302882838ec17dce51703d22cd8ad89162d6f60ea0bb19"},
 ]
 
 [package.extras]
@@ -1857,4 +1872,4 @@ h11 = ">=0.9.0,<1"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11"
-content-hash = "0ebd4840eeb2c52c2b0e39dc08f4aef69ff7b03fa0b1a31396fb27d62da9561e"
+content-hash = "08e3847b5a4c0f85b4de162d675f7129757ff357d70e41cdcb006bf4f2dfa89d"
