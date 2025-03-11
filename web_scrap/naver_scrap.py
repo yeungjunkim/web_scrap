@@ -80,17 +80,15 @@ def capture_and_summarize(link_list):
     driver = None  # Ensure driver is always defined
     try:
         chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument("--headless")  # Headless mode for cloud environments
-        chrome_options.add_argument("--no-sandbox")  # Bypass OS security model
-        chrome_options.add_argument("--disable-dev-shm-usage")  # Prevent crashes
-        chrome_options.add_argument("--disable-gpu")  # Sometimes needed for headless mode
+        chrome_options.add_argument("--headless")  # UI 없이 실행 (서버 환경에서 필수)
+        chrome_options.add_argument("--no-sandbox")  # 권한 문제 방지
+        chrome_options.add_argument("--disable-dev-shm-usage")  # 메모리 부족 방지
+        chrome_options.add_argument("--disable-gpu")  # GPU 사용 안 함
+        chrome_options.add_argument("--remote-debugging-port=9222")  # 디버깅 포트 설정
 
-        # Set Chrome binary location (adjust if needed)
-        # chrome_options.binary_location = "/usr/bin/google-chrome"
-
-        # Initialize WebDriver
-        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
-        
+        # ChromeDriver 자동 다운로드 및 실행
+        service = Service(ChromeDriverManager().install())
+        driver = webdriver.Chrome(service=service, options=chrome_options)
         os.system("google-chrome --version")
         
         # Web scraping logic here...
