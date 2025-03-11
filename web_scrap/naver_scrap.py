@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 
 import time
 import pandas as pd
@@ -85,8 +86,13 @@ def capture_and_summarize(link_list):
 
     chrome_options = webdriver.ChromeOptions()
     # driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
-    driver = webdriver.Chrome(service=webdriver.chrome.service.Service(ChromeDriverManager().install()), options=chrome_options)
-    
+    # driver = webdriver.Chrome(service=webdriver.chrome.service.Service(ChromeDriverManager().install()), options=chrome_options)
+    try:
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+    except Exception as e:
+        print(f"WebDriver error: {e}")
+
+
     # driver_path = "/mount/src/web_scrap/chromedriver"
     # service = ChromeService(executable_path=driver_path)
     # driver = webdriver.Chrome(service=service, options=chrome_options)
