@@ -77,6 +77,7 @@ def search_naver(query):
 # 2. 웹페이지 캡쳐 및 본문 내용 가져오기
 
 def capture_and_summarize(link_list):
+    
     driver = None  # Ensure driver is always defined
     try:
         chrome_options = webdriver.ChromeOptions()
@@ -86,10 +87,14 @@ def capture_and_summarize(link_list):
         chrome_options.add_argument("--disable-gpu")  # GPU 사용 안 함
         chrome_options.add_argument("--remote-debugging-port=9222")  # 디버깅 포트 설정
 
+        print(f'driver = [{driver}]')
         # ChromeDriver 자동 다운로드 및 실행
         service = Service(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service, options=chrome_options)
-        os.system("google-chrome --version")
+        
+        print(f'after service = [{service}]')
+        print(f'after driver = [{driver}]')
+        print(os.system("google-chrome --version"))
         
         # Web scraping logic here...
 
