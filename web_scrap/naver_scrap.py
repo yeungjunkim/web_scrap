@@ -84,12 +84,13 @@ def capture_and_summarize(link_list):
     
 
     chrome_options = webdriver.ChromeOptions()
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
-
+    # driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+    driver = webdriver.Chrome(service=webdriver.chrome.service.Service(ChromeDriverManager().install()), options=chrome_options)
+    
     # driver_path = "/mount/src/web_scrap/chromedriver"
     # service = ChromeService(executable_path=driver_path)
     # driver = webdriver.Chrome(service=service, options=chrome_options)
-    
+    os.system("google-chrome --version")
     results = []
 
     os.makedirs(screenshot_dir, exist_ok=True)
