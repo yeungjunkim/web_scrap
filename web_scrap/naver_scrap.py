@@ -75,30 +75,33 @@ def search_naver(query):
     return links
 
 # 2. 웹페이지 캡쳐 및 본문 내용 가져오기
+
 def capture_and_summarize(link_list):
-    # Selenium 설정 (헤드리스 모드)
-    driver = None  # Initialize driver to avoid UnboundLocalError
+    driver = None  # Ensure driver is always defined
     try:
         chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument("--headless")  # Run in headless mode
-        chrome_options.add_argument("--no-sandbox")  # Required for cloud environments
+        chrome_options.add_argument("--headless")  # Headless mode for cloud environments
+        chrome_options.add_argument("--no-sandbox")  # Bypass OS security model
         chrome_options.add_argument("--disable-dev-shm-usage")  # Prevent crashes
-        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--disable-gpu")  # Sometimes needed for headless mode
 
-        chrome_options.binary_location = "/usr/bin/google-chrome"  # Ensure correct Chrome path
+        # Set Chrome binary location (adjust if needed)
+        # chrome_options.binary_location = "/usr/bin/google-chrome"
 
         # Initialize WebDriver
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
         
-        # Your scraping logic here...
+        os.system("google-chrome --version")
         
+        # Web scraping logic here...
+
     except Exception as e:
-        print(f"Error initializing WebDriver: {e}")  # Debugging output
+        print(f"WebDriver initialization failed: {e}")  # Log error
+        driver = None  # Explicitly set driver to None in case of failure
 
     finally:
-        if driver is not None:
-            driver.quit()  # Only quit if driver was successfully created
-
+        if driver:  # Only quit if driver was successfully created
+            driver.quit()
 
     # driver_path = "/mount/src/web_scrap/chromedriver"
     # service = ChromeService(executable_path=driver_path)
