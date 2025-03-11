@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options as ChromeOptions
+from webdriver_manager.chrome import ChromeDriverManager
 
 import time
 import pandas as pd
@@ -79,8 +80,12 @@ def capture_and_summarize(link_list):
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome(options=chrome_options)
+    # driver = webdriver.Chrome(options=chrome_options)
     
+
+    chrome_options = webdriver.ChromeOptions()
+    driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+
     # driver_path = "/mount/src/web_scrap/chromedriver"
     # service = ChromeService(executable_path=driver_path)
     # driver = webdriver.Chrome(service=service, options=chrome_options)
